@@ -1,0 +1,549 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vanden — Portfolio</title>
+
+  <!-- Optional: modern font (safe + professional). Remove if you want zero external deps -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* =====================
+       Design Tokens
+    ====================== */
+    :root{
+      --bg: #0b1220;
+      --surface: rgba(255,255,255,0.06);
+      --surface-2: rgba(255,255,255,0.085);
+      --border: rgba(255,255,255,0.12);
+      --text: rgba(255,255,255,0.92);
+      --muted: rgba(255,255,255,0.70);
+      --muted-2: rgba(255,255,255,0.58);
+      --brand: #7c3aed; /* violet */
+      --brand-2: #22c55e; /* green accent */
+      --shadow: 0 18px 60px rgba(0,0,0,0.45);
+      --shadow-soft: 0 10px 30px rgba(0,0,0,0.28);
+      --radius: 18px;
+      --radius-sm: 14px;
+      --max: 1080px;
+    }
+
+    /* =====================
+       Base / Reset
+    ====================== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body{
+      font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(1200px 700px at 20% -10%, rgba(124,58,237,0.35), transparent 60%),
+                  radial-gradient(1000px 700px at 90% 10%, rgba(34,197,94,0.20), transparent 55%),
+                  var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a{ color: inherit; text-decoration: none; }
+    a:hover{ text-decoration: underline; }
+
+    .container{
+      max-width: var(--max);
+      margin: 0 auto;
+      padding: 28px 18px 64px;
+    }
+
+    /* =====================
+       Top Nav
+    ====================== */
+    .nav{
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.20);
+      backdrop-filter: blur(10px);
+      border-radius: 999px;
+      position: sticky;
+      top: 14px;
+      z-index: 10;
+      box-shadow: var(--shadow-soft);
+    }
+
+    .nav .logo{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .dot{
+      width: 10px; height: 10px; border-radius: 999px;
+      background: linear-gradient(135deg, var(--brand), var(--brand-2));
+      box-shadow: 0 0 0 4px rgba(124,58,237,0.18);
+    }
+
+    .nav .links{
+      display: flex;
+      gap: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+    .nav .links a{
+      padding: 8px 10px;
+      border-radius: 10px;
+    }
+    .nav .links a:hover{
+      background: rgba(255,255,255,0.06);
+      text-decoration: none;
+      color: var(--text);
+    }
+
+    .cta{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(124,58,237,0.45);
+      background: linear-gradient(135deg, rgba(124,58,237,0.28), rgba(124,58,237,0.10));
+      box-shadow: 0 10px 30px rgba(124,58,237,0.18);
+      font-weight: 600;
+    }
+    .cta:hover{
+      filter: brightness(1.06);
+      text-decoration: none;
+    }
+
+    /* =====================
+       Sections
+    ====================== */
+    section{
+      margin-top: 28px;
+    }
+
+    .card{
+      border: 1px solid var(--border);
+      background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.045));
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      overflow: hidden;
+    }
+
+    .card-inner{
+      padding: 34px;
+    }
+
+    .kicker{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--muted);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    .pill{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 6px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.16);
+      background: rgba(0,0,0,0.20);
+      color: var(--muted);
+      font-size: 0.88rem;
+      font-weight: 600;
+    }
+
+    h1{
+      font-size: clamp(2.1rem, 4vw, 3.2rem);
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+      margin-top: 12px;
+    }
+
+    h2{
+      font-size: clamp(1.4rem, 2.6vw, 2rem);
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    p{ color: var(--muted); font-size: 1.02rem; }
+
+    .hero{
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: center;
+    }
+
+    .hero .summary{
+      margin-top: 14px;
+      max-width: 62ch;
+    }
+
+    .hero-actions{
+      display: flex;
+      gap: 12px;
+      margin-top: 18px;
+      flex-wrap: wrap;
+    }
+
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.18);
+      color: var(--text);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .btn.primary{
+      border-color: rgba(124,58,237,0.55);
+      background: linear-gradient(135deg, rgba(124,58,237,0.34), rgba(124,58,237,0.14));
+      box-shadow: 0 14px 40px rgba(124,58,237,0.20);
+    }
+    .btn:hover{ filter: brightness(1.06); text-decoration: none; }
+
+    .profile{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .avatar-wrap{
+      width: min(280px, 86%);
+      aspect-ratio: 1/1;
+      border-radius: 26px;
+      padding: 10px;
+      background: linear-gradient(135deg, rgba(124,58,237,0.55), rgba(34,197,94,0.35));
+      box-shadow: 0 25px 80px rgba(0,0,0,0.55);
+    }
+    .avatar{
+      width: 100%;
+      height: 100%;
+      border-radius: 22px;
+      object-fit: cover;
+      border: 1px solid rgba(255,255,255,0.20);
+      background: rgba(0,0,0,0.25);
+    }
+
+    /* =====================
+       Featured Project
+    ====================== */
+    .split{
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .metrics{
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0,1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .metric{
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.20);
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .metric .num{
+      font-size: 1.2rem;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+    }
+    .metric .label{
+      color: var(--muted-2);
+      font-weight: 600;
+      font-size: 0.92rem;
+      margin-top: 2px;
+    }
+
+    .bullets{
+      margin-top: 14px;
+      display: grid;
+      gap: 10px;
+    }
+    .bullet{
+      display: flex;
+      gap: 10px;
+      align-items: flex-start;
+      padding: 12px 12px;
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+    }
+    .check{
+      width: 22px; height: 22px; border-radius: 8px;
+      background: rgba(34,197,94,0.18);
+      border: 1px solid rgba(34,197,94,0.35);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: rgba(34,197,94,0.95);
+      flex: 0 0 auto;
+      margin-top: 1px;
+    }
+    .bullet p{ color: var(--muted); font-size: 1rem; }
+
+    .project-media{
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 16px;
+    }
+    .shot{
+      border-radius: 14px;
+      border: 1px solid rgba(255,255,255,0.14);
+      overflow: hidden;
+      background: rgba(0,0,0,0.18);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.30);
+      height: 320px;
+      display: flex;
+      align-items: stretch;
+    }
+    .shot img{
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+    }
+    .shot.full-frame img{
+      object-fit: contain;
+      background: rgba(0,0,0,0.55);
+    }
+    .shot.large{ height: 420px; }
+    .caption{
+      padding: 10px 12px;
+      font-size: 0.92rem;
+      color: var(--muted-2);
+      border-top: 1px solid rgba(255,255,255,0.10);
+      background: rgba(0,0,0,0.20);
+    }
+
+    /* =====================
+       Skills
+    ====================== */
+    .chips{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .chip{
+      padding: 10px 12px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(0,0,0,0.18);
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+
+    /* =====================
+       Footer
+    ====================== */
+    footer{
+      margin-top: 28px;
+      border: 1px solid var(--border);
+      background: rgba(0,0,0,0.22);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow-soft);
+    }
+    .footer-inner{
+      padding: 26px 34px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .footer-inner p{ color: var(--muted-2); }
+
+    .email{
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.14);
+      background: rgba(255,255,255,0.04);
+      font-weight: 600;
+    }
+
+    /* =====================
+       Responsive
+    ====================== */
+    @media (max-width: 880px){
+      .hero{ grid-template-columns: 1fr; }
+      .profile{ order: -1; }
+      .split{ gap: 20px; }
+      .metrics{ grid-template-columns: 1fr; }
+      .project-media{ flex-direction: column; }
+      .card-inner{ padding: 24px; }
+      .footer-inner{ padding: 22px 24px; }
+      .nav .links{ display: none; } /* keep header clean on mobile */
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+
+    <!-- Sticky Top Nav -->
+    <div class="nav">
+      <div class="logo">
+        <span class="dot"></span>
+        <span>Vanden</span>
+      </div>
+
+      <div class="links">
+        <a href="#project">Project</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <a class="cta" href="#contact">Contact</a>
+    </div>
+
+    <!-- Hero -->
+    <section class="card" id="top" aria-label="Hero">
+      <div class="card-inner hero">
+        <div>
+          <div class="kicker">
+            <span class="pill">USC Student</span>
+            <span class="pill">Product • Growth</span>
+            <span class="pill">Video Editing</span>
+          </div>
+
+          <h1>Hey, I’m Vanden.</h1>
+          <p class="summary">
+            I'm a current USC sophomore interested in <strong>product management</strong> and <strong>growth marketing</strong>.
+            I have years of video editing experience and growing social media pages, and I patented a hardware invention in high school.
+          </p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#project">View featured project</a>
+            <a class="btn" href="#skills">Skills & experience</a>
+          </div>
+        </div>
+
+        <div class="profile">
+          <div class="avatar-wrap">
+            <img class="avatar" src="vandenpic.png" alt="Photo of Vanden" />
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Featured Project -->
+    <section class="card" id="project" aria-label="Featured Project">
+      <div class="card-inner">
+        <div class="kicker">
+          <span class="pill">Featured Project</span>
+          <span class="pill">Jingo</span>
+        </div>
+
+        <h2>Jingo — curated ecommerce for efficient shopping</h2>
+
+        <div class="split">
+          <div>
+            <p>
+              Jingo is an ecommerce platform built for efficient, curated shopping experiences.
+              As part of the product validation team, I launched campaigns across Reddit, Instagram, and TikTok to
+              validate demand and gather early insights.
+            </p>
+
+            <div class="metrics" aria-label="Key Results">
+              <div class="metric">
+                <div class="num">100+</div>
+                <div class="label">Landing page clicks</div>
+              </div>
+            </div>
+
+            <div class="bullets">
+              <div class="bullet">
+                <div class="check">✓</div>
+                <p><strong>Designed and executed</strong> targeted growth campaigns tailored to each platform’s audience.</p>
+              </div>
+              <div class="bullet">
+                <div class="check">✓</div>
+                <p><strong>Analyzed performance</strong> to identify top-performing channels and messaging patterns.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="project-media">
+            <div class="shot large">
+              <img src="jingofront.png" alt="Jingo landing page or hero screenshot" />
+              <div class="caption">Landing page / product surface</div>
+            </div>
+
+            <div class="shot">
+              <img src="jingoads.png" alt="Campaign examples or creative" />
+              <div class="caption">Campaign creative</div>
+            </div>
+
+            <div class="shot full-frame">
+              <img src="100clicks.png" alt="Results showing 100+ clicks" />
+              <div class="caption">Results snapshot</div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="card" id="skills" aria-label="Skills">
+      <div class="card-inner">
+        <div class="kicker">
+          <span class="pill">Skills</span>
+          <span class="pill">Experience</span>
+        </div>
+
+        <h2>Skills & Experience</h2>
+        <p>
+          A mix of product thinking, growth execution, and content production, optimized for fast testing and iteration.
+        </p>
+
+        <div class="chips" aria-label="Skill list">
+          <span class="chip">Product Management</span>
+          <span class="chip">Growth Marketing</span>
+          <span class="chip">Social Media Campaigns</span>
+          <span class="chip">Video Editing</span>
+          <span class="chip">User Research</span>
+          <span class="chip">Analytics (GA4 / attribution)</span>
+          <span class="chip">Figma</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <footer id="contact" aria-label="Contact">
+      <div class="footer-inner">
+        <div>
+          <h2 style="margin-bottom: 6px;">Get in touch</h2>
+          <p>Thanks for checking out my work 🚀</p>
+        </div>
+
+        <a class="email" href="mailto:vhusson@usc.edu" aria-label="Email Vanden">
+          vhusson@usc.edu
+        </a>
+      </div>
+    </footer>
+
+  </div>
+</body>
+</html>
