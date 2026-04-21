@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanden Husson | Work</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fcfcfc; color: #1a1a1a; }
+        .hero-text { font-size: clamp(3rem, 10vw, 7rem); line-height: 0.9; letter-spacing: -0.05em; }
+        .section-num { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; display: block; }
+        .skill-tag { border: 1px solid #1a1a1a; padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; }
+        .tiktok-frame { border: 1px solid #1a1a1a; background: #000; overflow: hidden; }
+        .tiktok-embed { position: relative; width: 100%; padding-top: 177.78%; }
+        .tiktok-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+        .inline-link { color: #6b7280; transition: color 0.2s ease; }
+        .inline-link:hover { color: #1a1a1a; }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <nav class="flex justify-between items-center mb-20">
+        <a href="index.html" class="font-black text-xl tracking-tighter uppercase">Vanden Husson</a>
+        <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
+            <a href="index.html" class="hover:line-through">Home</a>
+            <a href="work.html" class="hover:line-through">Work</a>
+            <a href="#" class="hover:line-through">Resume</a>
+        </div>
+    </nav>
+
+    <main>
+        <h1 class="hero-text font-black mb-12">selected work.</h1>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+            <section class="border-t border-black pt-6">
+                <span class="section-num">[01] college videos</span>
+                <p class="text-lg leading-snug mb-6">
+                    I create humorous, talking-to-camera college videos, including advice for community college students looking to transfer. These are some of my most viral videos recently.
+                </p>
+                <p class="text-sm uppercase tracking-widest font-bold mb-6">
+                    Over 1.3M+ views and <strong>100K likes</strong> across
+                    <a href="https://www.instagram.com/vandensingh/" class="inline-link underline underline-offset-4">Instagram</a>
+                    and
+                    <a href="https://www.tiktok.com/@vandenh67" class="inline-link underline underline-offset-4">TikTok</a>
+                </p>
+                <div class="flex flex-wrap gap-2">
+                    <span class="skill-tag">humor</span>
+                    <span class="skill-tag">talking to camera</span>
+                    <span class="skill-tag">cinematic promo</span>
+                </div>
+                <div class="grid grid-cols-2 md:grid-cols-3 gap-4 mt-6">
+                    <div class="tiktok-frame">
+                        <div class="tiktok-embed">
+                            <iframe src="https://www.tiktok.com/embed/v2/7627642602929589535" title="TikTok video 1" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="tiktok-frame">
+                        <div class="tiktok-embed">
+                            <iframe src="https://www.tiktok.com/embed/v2/7594226607041023262" title="TikTok video 2" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                    <div class="tiktok-frame">
+                        <div class="tiktok-embed">
+                            <iframe src="https://www.tiktok.com/embed/v2/7579838480436579614" title="TikTok video 3" allowfullscreen></iframe>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="border-t border-black pt-6">
+                <span class="section-num">[02] featured project</span>
+                <p class="text-lg leading-snug mb-6">
+                    Promotional video for Sandbox USC, an AI-centered entrepreneurship club at USC, edited to feel polished, energetic, and visually engaging.
+                </p>
+                <video class="w-1/2 mb-6 bg-black" controls playsinline preload="metadata">
+                    <source src="clubport2.mp4" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+                <a href="proport.html" class="inline-block text-sm font-bold uppercase tracking-widest hover:line-through">view more work</a>
+            </section>
+        </div>
+
+        <div class="max-w-3xl italic text-gray-500 text-xl md:text-2xl leading-relaxed border-t pt-8">
+            I edit content that can either feel personal and funny or polished and cinematic, depending on the story being told.
+        </div>
+    </main>
+
+    <footer class="mt-32 flex flex-col md:flex-row justify-between items-end gap-8">
+        <div class="space-y-2">
+            <div class="text-xs uppercase font-bold tracking-widest text-gray-400">Social</div>
+            <div class="flex gap-4 font-bold">
+                <a href="https://www.linkedin.com/in/vanden-husson-933743316/" class="hover:underline text-sm">LinkedIn</a>
+                <a href="#" class="hover:underline text-sm">TikTok</a>
+                <a href="#" class="hover:underline text-sm">Instagram</a>
+            </div>
+        </div>
+        <div class="text-right">
+            <p class="text-xs font-bold uppercase tracking-widest">Based in Los Angeles / USC</p>
+            <p class="text-xs text-gray-400">© 2026 Vanden Husson</p>
+        </div>
+    </footer>
+
+</body>
+</html>

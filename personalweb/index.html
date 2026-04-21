@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vanden Husson | Growth & Content</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap');
+        body { font-family: 'Inter', sans-serif; background-color: #fcfcfc; color: #1a1a1a; }
+        .hero-text { font-size: clamp(2.5rem, 7vw, 5.5rem); line-height: 0.92; letter-spacing: -0.05em; }
+        .section-num { font-size: 0.9rem; font-weight: 700; margin-bottom: 0.5rem; display: block; }
+        .skill-tag { border: 1px solid #1a1a1a; padding: 2px 8px; border-radius: 20px; font-size: 0.8rem; }
+        .hero-row { display: flex; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; }
+        .hero-photo-wrap { width: clamp(110px, 16vw, 160px); flex-shrink: 0; padding-top: 0.35rem; }
+        .hero-photo { width: 100%; aspect-ratio: 4 / 5; object-fit: cover; border-radius: 999px; }
+        @media (max-width: 640px) {
+            .hero-row { align-items: flex-end; gap: 1rem; }
+            .hero-photo-wrap { width: 92px; }
+        }
+    </style>
+</head>
+<body class="p-6 md:p-12">
+
+    <nav class="flex justify-between items-center mb-20">
+        <div class="font-black text-xl tracking-tighter uppercase">Vanden Husson</div>
+        <div class="hidden md:flex gap-8 text-xs font-bold uppercase tracking-widest">
+            <a href="#" class="hover:line-through">About</a>
+            <a href="work.html" class="hover:line-through">Work</a>
+            <a href="https://drive.google.com/file/d/1yfgXdBP9X5DjqdbG8RQJfadpHFoZsRvD/view?usp=sharing" class="hover:line-through">Resume</a>
+        </div>
+    </nav>
+
+    <main>
+        <div class="hero-row">
+            <h1 class="hero-text font-black">hey, i'm vanden.</h1>
+            <div class="hero-photo-wrap">
+                <img src="IMG_7546.jpeg" alt="Portrait of Vanden Husson" class="hero-photo">
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-12 mb-20">
+            <div class="space-y-12">
+                <section>
+                    <span class="section-num">[01] creator</span>
+                    <p class="text-lg leading-snug">
+                        ⦿ generated <strong>1.3M+ views</strong> across social platforms<br>
+                        ⦿ <strong>100k+ likes</strong> through high-retention storytelling<br>
+                        ⦿ creating content around community college transfer advice and college humor
+                    </p>
+                    <a href="work.html" class="inline-block mt-4 text-sm font-bold uppercase tracking-widest hover:line-through">check out my work</a>
+                </section>
+
+                <section>
+                    <span class="section-num">[02] usc student</span>
+                    <p class="text-lg leading-snug">
+                        ⦿ university of southern california (USC)<br>
+                        ⦿ public relations & advertising major<br>
+                        ⦿ focused on branding, iteration, and experimentation
+                    </p>
+                </section>
+            </div>
+
+            <div class="space-y-12">
+                <section>
+                    <span class="section-num">[03] campus ambassador @ 2 VC-backed startups</span>
+                    <p class="text-lg leading-snug">
+                        ⦿ <strong><a href="https://apps.apple.com/us/app/ripple-video-community/id6753926471" class="hover:underline">Ripple</a></strong> (backed by ex-CEO of Google) <br>
+                        ⦿ <strong><a href="https://apps.apple.com/us/app/gold-daily-fashion-deals/id6445965976" class="hover:underline">GOLD - Daily Fashion Deals</a></strong> (created by the founder of Waymo)<br>
+                        ⦿ increasing downloads, conducting user interviews, and identifying student pain points<br>
+                        ⦿ launching and catering startup events on campus to build awareness and community
+                    </p>
+                </section>
+
+                <section>
+                    <span class="section-num">[04] core expertise</span>
+                    <div class="flex flex-wrap gap-2 mt-2">
+                        <span class="skill-tag">startup growth</span>
+                        <span class="skill-tag">video editing</span>
+                        <span class="skill-tag">content creation</span>
+                        <span class="skill-tag">brand strategy</span>
+                    </div>
+                </section>
+            </div>
+        </div>
+
+        <div class="max-w-3xl italic text-gray-500 text-xl md:text-2xl leading-relaxed border-t pt-8">
+            i build at the intersection of attention and operations—helping startups find their voice and scale through data-driven creativity.
+        </div>
+    </main>
+
+    <footer class="mt-32 flex flex-col md:flex-row justify-between items-end gap-8">
+        <div class="space-y-2">
+            <div class="text-xs uppercase font-bold tracking-widest text-gray-400">Social</div>
+            <div class="flex gap-4 font-bold">
+                <a href="https://www.linkedin.com/in/vanden-husson-933743316/" class="hover:underline text-sm">LinkedIn</a>
+                <a href="#" class="hover:underline text-sm">TikTok</a>
+                <a href="#" class="hover:underline text-sm">Instagram</a>
+            </div>
+        </div>
+        <div class="text-right">
+            <p class="text-xs font-bold uppercase tracking-widest">Based in Los Angeles / USC</p>
+            <p class="text-xs text-gray-400">© 2026 Vanden Husson</p>
+        </div>
+    </footer>
+
+</body>
+</html>
